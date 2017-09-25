@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        * a{
+            text-decoration: none;
+        }
+        .container{
+            width:800px;
+            height: 450px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box{
+            position: absolute;
+            width: 4800px;
+            height: 450px;
+            z-index: 1;
+        }
+        .img{
+            float: left;
+            width: 800px;
+            height: 450px;
+        }
+
+        .arrow{
+            position: absolute;
+            font-size: 25px;
+            width: 100px;
+            height: 450px;
+            line-height: 450px;
+            z-index: 2;
+            text-align: center;
+        }
+        .arrow_left,{            
+            left: 0;    
+        } 
+        .container .arrow_right{
+           right: 0;
+        }
+        .arrow_left:hover{
+            background: -webkit-linear-gradient(left,rgba(200,200,200,0.5), rgba(200,200,200,0.1));
+        }
+        .arrow_right:hover{
+            background: -webkit-linear-gradient(right,rgba(200,200,200,0.5), rgba(200,200,200,0.1));
+        }
+        .btnBox{
+            width: 158px;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            left: 321px;
+            z-index: 2;
+        }
+        .btnBox .btn{
+            width: 18px;
+            height:18px;
+            float: left;
+            margin-left: 10px;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0);
+            outline: none;
+            border: 1px solid white;
+        }
+        .btn:first-of-type{
+            margin-left: 0;
+        }
+        .active{
+            background-color: white!important;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: white!important;
+        }
+    </style>   
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="images/1.jpg" alt="" class="img">
+            <img src="images/2.jpg" alt="" class="img">
+            <img src="images/3.jpg" alt="" class="img">
+            <img src="images/4.jpg" alt="" class="img">
+            <img src="images/5.jpg" alt="" class="img">
+            <img src="images/6.jpg" alt="" class="img">
+        </div>
+        <div class="arrowBox">
+            <a href="javascript:;" class="arrow arrow_left">👈</a>
+            <a href="javascript:;" class="arrow arrow_right">👉</a>
+        </div>
+        <div class="btnBox">
+            <button class="btn active"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
