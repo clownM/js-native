@@ -1,5 +1,5 @@
 (function(){
-    var imgs = document.getElementsByClassName("img");
+    var container = document.getElementsByClassName("container")[0];
     var box = document.getElementsByClassName("box")[0];
 
     var pre = document.getElementsByClassName("arrow_left")[0];
@@ -7,23 +7,66 @@
 
     var btn = document.getElementsByTagName("button");
     var flag = 0;
-    setInterval(function(){
-        flag++;
-        if(box.style.left === "-4000px"){            
+    var timer = null;
+
+    function btnShow(index){
+        for(var i = 0;i < btn.length;i++){
+            btn[i].classList.remove("active");
+        };
+        btn[index].classList.add("active");
+    };
+    function preImg(){  
+        flag--;  
+        if(flag < 0 ){            
+            box.style.left = "-4000px";
+            flag = 5;
+            btnShow(flag);
+        }else{            
+            var left = box.offsetLeft;
+            box.style.left = left+800 + "px";
+            btnShow(flag);
+        }
+    };
+    function nextImg(){    
+        flag++;  
+        if(flag > 5){            
             box.style.left = 0;
             flag = 0;
-            btn[5].classList.remove("active");
-            btn[flag].classList.add("active");
-        }else{
+            btnShow(flag);
+        }else{         
             var left = box.offsetLeft;
             box.style.left = left-800 + "px";
-            btn[flag].classList.add("active");
-            var flag_ = flag - 1;
-            btn[flag_].classList.remove("active");
-        }
-    },2000);
+            btnShow(flag);
+        };
+    };
+    
+    function autoPlay(){
+        timer = setInterval(nextImg,1000);
+    };
+    autoPlay();
+
+    container.onmouseover = function(){
+        clearInterval(timer);
+    };
+    container.onmouseleave = function(){
+        autoPlay();
+    };
 
     pre.onclick = function(){
-
+        preImg();
     };
+    next.onclick = function(){
+        nextImg();
+    };
+
+    for(var i = 0; i < btn.length;i++){
+        btn[i].onclick = function(){
+            var index = this.getAttribute("index");
+            btnShow(index-1);
+            flag = index -1;
+            box.style.left = (-800)*(index-1) + "px";
+            autoPlay();
+        };
+    }
+    
 })();
